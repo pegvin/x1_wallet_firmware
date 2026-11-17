@@ -73,3 +73,10 @@ target_include_directories( ${EXECUTABLE} PRIVATE vendor/nanopb generated/proto 
 # Enable support for dynamically allocated fields in nanopb
 # Ref: vendor/nanopb/pb.h
 add_compile_definitions(PB_ENABLE_MALLOC=1 PB_NO_ERRMSG=1)
+
+target_compile_options(cbor PRIVATE
+    -mcpu=cortex-m4
+    -mthumb
+    -mfpu=fpv4-sp-d16
+    -mfloat-abi=hard
+)

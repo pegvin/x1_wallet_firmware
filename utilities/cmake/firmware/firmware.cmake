@@ -246,3 +246,9 @@ if (SIGN_BINARY)
                 COMMAND python3 ${CMAKE_SOURCE_DIR}/utilities/script/index.py sign-header --input=${PROJECT_NAME}_Header.bin --output=${PROJECT_NAME}-signed.bin --private-key=${CMAKE_SOURCE_DIR}/utilities/script/private_key2.h
                 COMMAND rm ${PROJECT_NAME}_Header.bin)
 endif()
+
+# Enable size optimizations with debug info for "non-essential" sources to ensure
+# final build fits in the device flash
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    set_source_files_properties(${LIBRARIES_SRC_DIR} APPEND PROPERTIES COMPILE_FLAGS "-Os -g1")
+endif()

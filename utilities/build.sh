@@ -130,6 +130,7 @@ fi
 	-DFIRMWARE_TYPE="${ACTIVE_TYPE}" \
 	-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON \
 	-DCMAKE_BUILD_PLATFORM:STRING="${BUILD_PLATFORM}" \
+	-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
 	-G "${GEN}" ../../ >/dev/null && cp compile_commands.json ../
 
 # exit if configuration failed with errors
